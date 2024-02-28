@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MvcOgrenciProject.SeedData;
+using System.Text.RegularExpressions;
 
 namespace MvcOgrenciProject.Controllers
 {
@@ -6,7 +8,14 @@ namespace MvcOgrenciProject.Controllers
     {
         public IActionResult Index()
         {
+
+            
             return View();
+            
+
+
         }
+        
+        
     }
 }
