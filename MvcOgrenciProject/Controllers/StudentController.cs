@@ -42,10 +42,24 @@ namespace MvcOgrenciProject.Controllers
             ViewBag.StudentName = student.Name.ToString();
             ViewBag.StudentLastName = student.LastName.ToString();
             ViewBag.StudentGroupName = student.GroupID.ToString(); //:(
-
             ViewBag.Groups = GroupSeed.Groups.ToList();
 
+            ViewBag.Student = student;
+
             return View(student);
+        }
+
+        [HttpPost]
+        public IActionResult Update2(IFormCollection yeniDegerler)
+        {
+            int Id = Convert.ToInt32(yeniDegerler["aydi"]);
+            Student student = StudentSeed.Students.FirstOrDefault(x => x.Id == Id);
+            student.Name = yeniDegerler["ad"].ToString();
+            student.LastName = yeniDegerler["soyad"].ToString();
+
+            student.Group.Name = yeniDegerler["grupAdi"].ToString();
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
