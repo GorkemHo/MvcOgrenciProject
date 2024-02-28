@@ -5,35 +5,40 @@
 @model Student
 
 <h1>Güncelleme Sayfası</h1>
-<form asp-controller="Student" asp-action="Detay" method="post">
+<form asp-controller="Student" asp-action="Update2" method="post">
 
     <main class="form-signin w-100 m-auto">
 
 
-        <form asp-controller="Student" asp-action="Update" method="post">
+        <form asp-controller="Student" asp-action="Update2" method="post">
 
             <div class="form-floating mb-3">
-                <input asp-for="Name" type="text" class="form-control" id="floatingInput">
-                <label for="floatingInput">@ViewBag.StudentName</label>
+                <input asp-for="Name" type="text" name="ad" class="form-control" id="floatingInput">
+                <label for="floatingInput">@ViewBag.Student.Name</label>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="LastName" type="text" class="form-control" id="floatingPassword">
-                <label for="floatingPassword">@ViewBag.StudentLastName</label>
+                <input asp-for="LastName" type="text" name="soyad" class="form-control" id="floatingPassword">
+                <label for="floatingPassword">@ViewBag.Student.LastName</label>
             </div>
-            <div class="form-floating mb-3">
+            @* <div class="form-floating mb-3">
                 <input asp-for="Group.Name" type="text" class="form-control" id="floatingPassword" placeholder="GroupName">
                 <label for="floatingPassword">@ViewBag.StudentGroupName</label>
-            </div>
+            </div> *@
             <div class="">
-                <label for="grouplist" class="form-label">State</label>
-                <select class="form-select" id="grouplist" required>
+                <label asp-for="GroupID" for="grouplist" class="form-label">Group Adı</label>
+                <select class="form-select" id="grouplist" name="grupAdi" required>
                     
-                    <option selected disabled value="">Group1</option>
-                    <option>Group2</option>
+                    @foreach (var group in ViewBag.Groups)
+                    {
+                         
+                        <option>@group.Name</option>
+                    }
+                    @* <option selected disabled value="">Group1</option>
+                    <option>Group2</option> *@
                 </select>
             </div>
             <button class="btn btn-warning w-100 my-2 py-2" type="submit">Güncelle</button>
-
+            <input type="hidden" name="aydi" value="@ViewBag.Student.Id" />
         </form>
     </main>
     </div>
