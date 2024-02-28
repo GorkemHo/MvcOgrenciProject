@@ -34,8 +34,16 @@
             <div id="collapse_@group.GroupID" class="accordion-collapse collapse" aria-labelledby="heading_@group.GroupID" data-bs-parent="#accordionExample">
                 @foreach (var student in group.Students)
                 {
-                    <div class="accordion-body">
-                        @student.Name
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="accordion-body">
+                                @student.Name
+                            </div>
+                        </div>
+
+                        <div class="col-3">
+                            <a class="btn btn-primary" >Öğrenci Görev Listesi</a>
+                        </div>
                     </div>
                 }
             </div>
