@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form asp-controller="Group" asp-action="Create" method="post">
+    <div>
+        <label>Grup Adı</label>
+        <input type="text" name="groupName" value="" class="form-control" />
+    </div>
+
+    <div>
+        <input type="submit" value="Grup Ekle" class="btn btn-success" />
+    </div>
+</form>
