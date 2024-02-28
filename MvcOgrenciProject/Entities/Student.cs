@@ -3,7 +3,7 @@
     public class Student : BaseEntity
     {
         public string LastName { get; set; }
-        public int GoroupID { get; set; }
+        public int GroupID { get; set; }
         public Group Group { get; set; }
 
         public ICollection<StudentTask> StudentTasks { get; set; }

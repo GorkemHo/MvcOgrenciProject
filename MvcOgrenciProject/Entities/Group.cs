@@ -2,6 +2,7 @@
 {
     public class Group : BaseEntity
     {
+
         public ICollection<Student> Students { get; set; }
 
         public Group()
