@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Update";
+}
+
+@model Student
+
+<h1>Güncelleme Sayfası</h1>
+<form asp-controller="Student" asp-action="Detay" method="post">
+
+    <main class="form-signin w-100 m-auto">
+
+
+        <form asp-controller="Student" asp-action="Update" method="post">
+
+            <div class="form-floating mb-3">
+                <input asp-for="Name" type="text" class="form-control" id="floatingInput">
+                <label for="floatingInput">@ViewBag.StudentName</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="LastName" type="text" class="form-control" id="floatingPassword">
+                <label for="floatingPassword">@ViewBag.StudentLastName</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Group.Name" type="text" class="form-control" id="floatingPassword" placeholder="GroupName">
+                <label for="floatingPassword">@ViewBag.StudentGroupName</label>
+            </div>
+            <div class="">
+                <label for="grouplist" class="form-label">State</label>
+                <select class="form-select" id="grouplist" required>
+                    @fore
+                    <option selected disabled value="">Group1</option>
+                    <option>Group2</option>
+                </select>
+            </div>
+            <button class="btn btn-warning w-100 my-2 py-2" type="submit">Güncelle</button>
+
+        </form>
+    </main>
+    </div>
+
+</form>
+

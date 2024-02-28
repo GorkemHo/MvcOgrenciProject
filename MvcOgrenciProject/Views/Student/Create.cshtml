@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+@model Student
+
+<h1>Öğrenci Oluşturma Sayfası</h1>
+<form asp-controller="Student" asp-action="Create" method="post">
+
+    <main class="form-signin w-100 m-auto">
+        <form asp-controller="Student" asp-action="Create" method="post">
+
+            <div class="form-floating mb-3">
+                <input asp-for="Name" type="text" class="form-control" id="floatingInput" placeholder="Ad">
+                <label for="floatingInput">Öğrenci Adı</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="LastName" type="text" class="form-control" id="floatingPassword" placeholder="Soyad">
+                <label for="floatingPassword">Öğrenci Soyadı</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Group.Name" type="text" class="form-control" id="floatingPassword" placeholder="GroupName">
+                <label for="floatingPassword">Group Adı</label>
+            </div>
+
+
+
+
+            <button class="btn btn-primary w-100 my-2 py-2" type="submit">Öğrenci Ekle</button>
+            <p class="mt-5 mb-3 text-body-secondary">© GörkemH - @DateTime.Now.Year</p>
+        </form>
+    </main>
+    </div>
+
+</form>
+
