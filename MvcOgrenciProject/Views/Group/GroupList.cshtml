@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "GroupList";
+    var groupstudents = (List<GroupStudentListVm>)ViewData["GroupStudents"];
+}
+
+<h1>GroupList</h1>
+
+<a class="btn btn-primary" asp-controller="Group" asp-action="Create">Yeni Grup Ekle</a>
+
+<div class="accordion" id="accordionExample">
+    @foreach (var group in groupstudents)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <div class="row">
+
+                    <div class="col-9">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@group.GroupID" aria-expanded="true" aria-controls="collapse_@group.GroupID">
+                            @group.GroupName
+                        </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-success">
+                            Güncelle
+                        </button>
+                        <a class="btn btn-danger" asp-controller="Group" asp-action="Delete">
+                            Sil
+                        </a>
+                    </div>
+
+                </div>
+            </h2>
+
+            <div id="collapse_@group.GroupID" class="accordion-collapse collapse" aria-labelledby="heading_@group.GroupID" data-bs-parent="#accordionExample">
+                @foreach (var student in group.Students)
+                {
+                    <div class="accordion-body">
+                        @student.Name
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

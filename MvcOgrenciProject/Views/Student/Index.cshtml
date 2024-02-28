@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+@model List<Student>
+
+<h1 class="">Student List</h1>
+<button class="btn btn-success"><a style="color:white; text-decoration:none" asp-controller="Student" asp-action="Create">Create Student</a></button>
+<table class="table table-hover">
+    <thead class="">
+        <tr class="fs-1">
+            <th class="pe-5">Adı</th>
+            <th class="ps-5">Soyadı</th>
+            <th class="ps-5">Grup Name</th>
+            <th class="ps-5">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var student in Model)
+            {
+                <tr class="fs-3 ">
+                    
+                    <td class="pe-5">@student.Name</td>
+                    <td class="ps-5">@student.LastName</td>
+                    <td class="ps-5">@student.GroupID</td>
+                    <td class="ps-5 d-flex">
+                        <form asp-controller="Student" asp-action="Detay" asp-route-studentId="@student.Id" method="post">
+                            <button type="submit" class="m-2 btn btn-primary">
+                                Detay
+                            </button>
+                        </form>
+                        <form asp-controller="Student" asp-action="Update" asp-route-studentId="@student.Id">
+                            <button type="submit" class="m-2 btn btn-warning">
+                                Güncelle
+                            </button>
+                        </form>
+                        <form asp-controller="Student" asp-action="Delete" asp-route-studentId="@student.Id">
+                            <button type="submit" class="m-2 btn btn-danger">
+                                Sil
+                            </button>
+                        </form>
+                    </td>
+
+
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

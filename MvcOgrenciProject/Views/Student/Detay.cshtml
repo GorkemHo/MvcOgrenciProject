@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Detay";
+}
+@model Student 
+
+
+<h1>Öğrenci Detayları</h1>
+
+
+<dl class="row align-items-center border text-center ">     
+    @* <dt class="col-sm-3">ID</dt>     
+    <dd class="col-sm-9">@Model.Id</dd>       *@
+    <dt class="col-sm-3 border">Ad</dt>
+    <dd class="col-sm-9 border  mb-0">@Model.Name</dd>
+    <dt class="col-sm-3 border">Soyad</dt>
+    <dd class="col-sm-9 border  mb-0">@Model.LastName</dd>
+    @* <dt class="col-sm-3">Grup</dt>     
+    <dd class="col-sm-9">@Model.GroupID</dd>  *@
+</dl>  
+<a class="btn btn-outline-danger" asp-action="Index" asp-controller="Student">Geri Dön</a>
