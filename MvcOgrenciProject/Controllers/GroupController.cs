@@ -60,13 +60,27 @@ namespace MvcOgrenciProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(IFormCollection collection)
+        public IActionResult Update(int groupId)
         {
-            return View();
-            
+            Group group = GroupSeed.Groups.FirstOrDefault(x => x.Id == groupId);
+            ViewBag.GroupId = groupId;
+            ViewBag.Grup = GroupSeed.Groups.ToList();
 
-
+            return View(group);
         }
+
+        [HttpPost]
+        public IActionResult Update2(IFormCollection yeniDeger)
+        {
+            int Id = Convert.ToInt32(yeniDeger["grup"]);
+            Group group = GroupSeed.Groups.FirstOrDefault(x => x.Id == Id);
+
+            group.Name = yeniDeger["yeniisim"].ToString();
+
+
+            return RedirectToAction("GroupList");
+        }
+
         public IActionResult StudentTaskList(int id) 
         { 
             Student student = StudentSeed.Students.FirstOrDefault(s=>s.Id == id);

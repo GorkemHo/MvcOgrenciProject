@@ -20,10 +20,12 @@
                         </button>
                     </div>
                     <div class="col-3">
-                        <button class="btn btn-success">
-                            Güncelle
-                        </button>
-                        <a class="btn btn-danger" asp-controller="Group" asp-action="Delete" asp-route-groupId="@group.GroupID">
+                        <form asp-controller="Group" asp-action="Update" asp-route-groupId="@group.GroupID">
+                            <button type="submit" class="btn btn-warning">
+                                Güncelle
+                            </button>
+                        </form>
+                        <a class="btn btn-danger" asp-controller="Group" asp-action="Delete">
                             Sil
                         </a>
                     </div>

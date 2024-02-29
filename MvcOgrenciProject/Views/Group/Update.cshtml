@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Update";
+}
+
+@model Group
+
+<h1>Update</h1>
+
+<form asp-controller="Group" asp-action="Update2" method="post">
+
+    <form asp-controller="Group" asp-action="Update2" method="post">
+
+        <input asp-for="Name" placeholder="Yeni ismi giriniz" name="yeniisim"/>
+
+        <button class="btn btn-warning" type="submit">Güncelle</button>
+
+        <input type="hidden" name="grup" value="@ViewBag.GroupId" />
+
+    </form>
+</form>
