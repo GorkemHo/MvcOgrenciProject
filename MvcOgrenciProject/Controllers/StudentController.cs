@@ -83,5 +83,6 @@ namespace MvcOgrenciProject.Controllers
             Student student = StudentSeed.Students.FirstOrDefault(x => x.Id == studentId);
             return View(student);
         }
+        
     }
 }

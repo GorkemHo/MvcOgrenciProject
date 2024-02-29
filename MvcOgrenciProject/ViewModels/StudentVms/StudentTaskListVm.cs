@@ -4,6 +4,7 @@ namespace MvcOgrenciProject.ViewModels.StudentVms
 {
     public class StudentTaskListVm
     {
+        
         private readonly Student _student;
         private readonly List<Entities.Task> _tasks;
         private readonly string _groupName;
@@ -19,5 +20,6 @@ namespace MvcOgrenciProject.ViewModels.StudentVms
         public string LastName => _student.LastName;
         public string GroupName => _groupName;
         public int GroupId => _student.GroupID;
+        public List<Entities.Task> Tasks => _tasks;
     }
 }

@@ -2,6 +2,7 @@
 using MvcOgrenciProject.Entities;
 using MvcOgrenciProject.SeedData;
 using MvcOgrenciProject.ViewModels.GroupVms;
+using MvcOgrenciProject.ViewModels.StudentVms;
 using System.Text.RegularExpressions;
 using Group = MvcOgrenciProject.Entities.Group;
 
@@ -62,14 +63,19 @@ namespace MvcOgrenciProject.Controllers
         [HttpPost]
         public IActionResult Update(IFormCollection collection)
         {
-
-            //GroupUpdateVm groupUpdateVm = new GroupUpdateVm()
-            //{
-                
-            //}
-
             return View();
-        }
+            
 
+
+        }
+        public IActionResult StudentTaskList(int id) 
+        { 
+            Student student = StudentSeed.Students.FirstOrDefault(s=>s.Id == id);
+            Group group = GroupSeed.Groups.FirstOrDefault(g => g.Id == student.GroupID);
+            List<int> studenttasks = StudentTaskSeed.StudentTasks.Where(t => t.StudentID == id).Select(t=>t.TaskID).ToList();
+            List<Entities.Task> tasks= TaskSeed.Tasks.Where(t=>studenttasks.Contains(t.Id)).ToList();
+            StudentTaskListVm studentTask= new StudentTaskListVm(tasks,student,group.Name);
+            return View(studentTask);
+        }
     }
 }

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "StudentTaskList";
+}
+@model StudentTaskListVm
+
+<table class="table " >
+    <tr>
+        <th>Group Adı</th>
+        <th>Öğrenci Adı</th>
+        <th>Öğrenci Soyadı</th>
+    </tr>
+    <tr>
+        <td>@Model.GroupName</td>
+        <td>@Model.FirstName</td>
+<td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            @Html.Partial("Partials/_StudentTaskListPartial", Model.Tasks)
+        </td>
+    </tr>
+</table>
