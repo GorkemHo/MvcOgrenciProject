@@ -6,7 +6,7 @@ namespace MvcOgrenciProject.SeedData
     {
         public static List<Student> Students = new List<Student>
         {
-            new Student() {Id= 1, Name="Student1",LastName="Last Name 1", GroupID=1 },
+            new Student() {Id= 1, Name="Student1",LastName="Last Name 1", Group = new Group(){ Id=1, Name="Group1"} },
             new Student() {Id= 2, Name="Student2",LastName="Last Name 2", GroupID=1 },
             new Student() {Id= 3, Name="Student3",LastName="Last Name 3", GroupID=2 },
             new Student() {Id= 4, Name="Student4",LastName="Last Name 4", GroupID=2 },

@@ -58,7 +58,6 @@ namespace MvcOgrenciProject.Controllers
             return RedirectToAction("GroupList");
         }
 
-
         [HttpPost]
         public IActionResult Update(IFormCollection collection)
         {
