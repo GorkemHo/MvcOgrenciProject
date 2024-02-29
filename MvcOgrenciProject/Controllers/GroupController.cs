@@ -48,9 +48,9 @@ namespace MvcOgrenciProject.Controllers
             return RedirectToAction("GroupList");
         }
 
-        public IActionResult Delete(int groupid)
+        public IActionResult Delete(int groupId)
         {
-            var groupDelete = GroupSeed.Groups.FirstOrDefault(g => g.Id == groupid);
+            var groupDelete = GroupSeed.Groups.FirstOrDefault(g => g.Id == groupId);
             if (groupDelete != null)
             {
                 GroupSeed.Groups.Remove(groupDelete);
