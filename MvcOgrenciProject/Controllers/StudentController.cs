@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MvcOgrenciProject.Entities;
 using MvcOgrenciProject.SeedData;
+using System.Drawing.Drawing2D;
 
 namespace MvcOgrenciProject.Controllers
 {
@@ -14,6 +15,7 @@ namespace MvcOgrenciProject.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Gruplar = GroupSeed.Groups.ToList();
             return View();
         }
 
@@ -21,7 +23,9 @@ namespace MvcOgrenciProject.Controllers
         public IActionResult Create(Student student)
         {
             student.Id = StudentSeed.Students.Max(x => x.Id) + 1;
+            
             StudentSeed.Students.Add(student);
+
             return RedirectToAction("Index");
         }
         [HttpPost]
@@ -41,7 +45,17 @@ namespace MvcOgrenciProject.Controllers
             ViewBag.StudentId = studentId;
             ViewBag.StudentName = student.Name.ToString();
             ViewBag.StudentLastName = student.LastName.ToString();
-            ViewBag.StudentGroupName = student.GroupID.ToString(); //:(
+
+            Group grp = new Group()
+            {
+                Name = GroupSeed.Groups.First(x => x.Id == student.GroupID).Name,
+                Id = student.GroupID
+            };
+
+            student.Group = grp;
+
+            ViewBag.StudentGroupName = student.Group.Name.ToString(); //:(
+            
             ViewBag.Groups = GroupSeed.Groups.ToList();
 
             ViewBag.Student = student;
@@ -54,10 +68,11 @@ namespace MvcOgrenciProject.Controllers
         {
             int Id = Convert.ToInt32(yeniDegerler["aydi"]);
             Student student = StudentSeed.Students.FirstOrDefault(x => x.Id == Id);
+
             student.Name = yeniDegerler["ad"].ToString();
             student.LastName = yeniDegerler["soyad"].ToString();
-
-            student.Group.Name = yeniDegerler["grupAdi"].ToString();
+            student.GroupID = int.Parse(yeniDegerler["grup"]);
+            student.Group.Name = GroupSeed.Groups.First(x => x.Id == student.GroupID).Name.ToString();
 
             return RedirectToAction("Index");
         }

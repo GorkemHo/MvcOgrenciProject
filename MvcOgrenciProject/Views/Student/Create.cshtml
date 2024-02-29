@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Create";
 }
 @model Student
@@ -18,15 +17,25 @@
                 <input asp-for="LastName" type="text" class="form-control" id="floatingPassword" placeholder="Soyad">
                 <label for="floatingPassword">Öğrenci Soyadı</label>
             </div>
-            <div class="form-floating mb-3">
+           @*  <div class="form-floating mb-3">
                 <input asp-for="Group.Name" type="text" class="form-control" id="floatingPassword" placeholder="GroupName">
                 <label for="floatingPassword">Group Adı</label>
             </div>
+ *@
+            <div class="form-floating mb-3">
+                <select asp-for="GroupID" type="text" class="form-control" id="floatingPassword" placeholder="GroupName">
+                    @foreach (Group grup in (List<Group>)ViewBag.Gruplar)
+                    {
+                        <option value="@grup.Id">@grup.Name</option>
+                    }
+                </select>
+                <label for="floatingPassword">Group Adı</label>
+            </div>
 
-
-
+            
 
             <button class="btn btn-primary w-100 my-2 py-2" type="submit">Öğrenci Ekle</button>
+
             <p class="mt-5 mb-3 text-body-secondary">© GörkemH - @DateTime.Now.Year</p>
         </form>
     </main>

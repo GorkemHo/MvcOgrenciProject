@@ -16,29 +16,28 @@
                 <input asp-for="Name" type="text" name="ad" class="form-control" id="floatingInput">
                 <label for="floatingInput">@ViewBag.Student.Name</label>
             </div>
+
             <div class="form-floating mb-3">
                 <input asp-for="LastName" type="text" name="soyad" class="form-control" id="floatingPassword">
                 <label for="floatingPassword">@ViewBag.Student.LastName</label>
             </div>
-            @* <div class="form-floating mb-3">
-                <input asp-for="Group.Name" type="text" class="form-control" id="floatingPassword" placeholder="GroupName">
-                <label for="floatingPassword">@ViewBag.StudentGroupName</label>
-            </div> *@
+
             <div class="">
-                <label asp-for="GroupID" for="grouplist" class="form-label">Group Adı</label>
-                <select class="form-select" id="grouplist" name="grupAdi" required>
-                    
-                    @foreach (var group in ViewBag.Groups)
+                <label asp-for="GroupID" for="grouplist" class="form-label" >Group Adı</label>
+                <select asp-for="Group.Name" class="form-select" id="grouplist" name="grup" required>
+                    @* <option selected="">ViewBag.StudentGroupName</option> *@
+                    @foreach (Group group in (List<Group>)ViewBag.Groups)
                     {
-                         
-                        <option>@group.Name</option>
+                        <option value="@group.Id">@group.Name</option>
                     }
-                    @* <option selected disabled value="">Group1</option>
-                    <option>Group2</option> *@
+                    
                 </select>
             </div>
+
             <button class="btn btn-warning w-100 my-2 py-2" type="submit">Güncelle</button>
+            
             <input type="hidden" name="aydi" value="@ViewBag.Student.Id" />
+
         </form>
     </main>
     </div>
