@@ -1,4 +1,5 @@
-﻿using MvcOgrenciProject.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using MvcOgrenciProject.Entities;
 
 namespace MvcOgrenciProject.ViewModels.StudentVms
 {
@@ -12,6 +13,9 @@ namespace MvcOgrenciProject.ViewModels.StudentVms
             _student = student;
             _groupName = groupName;            
         }
+        
+
+
 
         public string FirstName => _student.Name;
         public string LastName => _student.LastName;
